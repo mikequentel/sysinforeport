@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export DATE_CMD="date -u +%Y-%m-%d_%H.%M.%S_UTC"
-CMDS_LINUX="cat /etc/*release*,cat /proc/version, uname -a,inxi -c 5 -b,lsb_release -a,df -h,lsblk,lscpu,cat /proc/meminfo,lspci,lsusb,lshw -short"
+CMDS_LINUX="cat /etc/*release*,cat /proc/version, uname -a,inxi -c 0 -b,lsb_release -a,df -h,lsblk,lscpu,cat /proc/meminfo,lspci,lsusb,lshw -short"
 
 echo "SYSTEM INFORMATION REPORT $(eval ${DATE_CMD})"
 
@@ -16,5 +16,7 @@ for CMD in "${CMDS_LIST[@]}"; do
   echo "---"
   echo
   echo "# ${CMD}"
+  echo '```'
   eval "${CMD}"
+  echo '```'
 done
